@@ -5,6 +5,9 @@ import { UncontrolledModal } from './UncontrolledModal';
 import { ControlledModal } from './ControlledModal';
 import React, {useState} from 'react';
 import { UncontrolledOnboardingFlow } from './UncontrolledOnboardingFlow';
+import { withUser } from './withUser';
+import { UserInfo } from './UserInfo';
+import { UserInfoForm } from './UserInfoForm';
 
 const StepOne = ({goToNext}) => (
   <>
@@ -25,16 +28,20 @@ const StepThree = ({goToNext}) => (
   </>
 )
 
+const UserInfowithLoader = withUser(UserInfo, '234');
+
 function App() {
   const [showModal, setShowModal] = useState(false);
 
   return (
     <div className="App">
-      <UncontrolledOnboardingFlow>
+      <UserInfowithLoader/>
+      <UserInfoForm/>
+      {/* <UncontrolledOnboardingFlow>
         <StepOne/>
         <StepTwo/>
         <StepThree/>
-      </UncontrolledOnboardingFlow>
+      </UncontrolledOnboardingFlow> */}
         {/* <UncontrolledForm />
         <ControlledForm/>
         <UncontrolledModal /> */}
